@@ -59,3 +59,4 @@ end
 
 gem 'inherited_resources'
 gem "geocoder"
+gem "squeel"

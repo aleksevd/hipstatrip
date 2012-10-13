@@ -1,3 +1,5 @@
+require "pry"
+
 class TripsController < InheritedResources::Base
   actions :all, except: [:index, :create]
 
@@ -24,5 +26,6 @@ class TripsController < InheritedResources::Base
 
   def show
     @trip = TripDecorator.find(params[:id])
+    @proposals = ProposalDecorator.decorate(Proposal.visible_for(current_user))
   end
 end

@@ -23,7 +23,7 @@ span= link_to "Make proposal", new_trip_proposal_path(@trip), class: "btn btn-su
 h2 Proposals
 
 ul.proposals
-  - @trip.proposals.each do |proposal|
+  - @proposals.each do |proposal|
     li
       span.label.label-info= proposal.state_name
       span= proposal.description

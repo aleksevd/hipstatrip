@@ -5,5 +5,7 @@ FactoryGirl.define do
     email { "#{generate(:string)}@example.com" }
     password { "foobar" }
     password_confirmation { "foobar" }
+    confirmation_token  nil
+    confirmed_at { Time.now }
   end
 end
