@@ -15,14 +15,28 @@ class Proposal < ActiveRecord::Base
 
   def accept!
     update_column :state, 1
+
+    if driver?
+      trip.update_column :driver_id, sender_id
+      trip.proposals.where { id != my { id } }.destroy_all
+    else
+      trip.passengers << sender
+    end
   end
 
   def cancel!
     update_column :state, 2
   end
 
+
   def self.visible_for(user)
     joins { trip.passengers_trips.outer }.
       where { (sender_id == my { user.id }) | (trip.driver_id == my { user.id }) | ((trip.driver_id == nil) & (passengers_trips.passenger_id == my { user.id })) }
+  end
+
+private
+
+  def driver?
+    trip.driver_id.nil?
   end
 end
