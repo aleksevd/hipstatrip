@@ -4,5 +4,5 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   belongs_to :trip
-  has_many :trips
+  has_many :trips, foreign_key: :driver_id
 end
