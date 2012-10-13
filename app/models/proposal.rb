@@ -2,6 +2,7 @@ class Proposal < ActiveRecord::Base
   belongs_to :sender, class_name: :User
   belongs_to :receiver, class_name: :User
   belongs_to :trip
+  has_many :comments, as: :owner
 
   validates_presence_of :sender
   validates_presence_of :receiver

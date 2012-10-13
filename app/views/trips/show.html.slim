@@ -3,6 +3,7 @@ h1 Trip
 p
   = "Starts_at: "
   = @trip.starts_at
+<<<<<<< HEAD
 
 h2 Proposals
 ul
@@ -14,3 +15,23 @@ ul
       = link_to "Cancel", [proposal, :cancel], method: :post
 
 = link_to "Show trips", :back
+=======
+p
+  = "Driver: "
+  = @trip.driver.try(:email)
+p
+  = "Passengers"
+  ul
+    - @trip.passengers.each do |passenger|
+      = passenger.email
+
+h4 Comments
+ul
+  = render @trip.comments if @trip.comments
+
+h4 Leave a comment
+= render "comments/form"
+
+= link_to "Show trips", :back
+
+>>>>>>> comments added

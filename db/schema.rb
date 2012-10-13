@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013105603) do
+ActiveRecord::Schema.define(:version => 20121013120135) do
+
+  create_table "comments", :force => true do |t|
+    t.string   "text"
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "passengers_trips", :force => true do |t|
     t.integer  "passenger_id"

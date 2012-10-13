@@ -6,6 +6,7 @@ class Trip < ActiveRecord::Base
   belongs_to :driver, class_name: "User"
   has_many :passengers_trips
   has_many :passengers, through: :passengers_trips, class_name: "User", foreign_key: :passenger_id
+  has_many :comments, as: :owner
 
   accepts_nested_attributes_for :passengers_trips
 
