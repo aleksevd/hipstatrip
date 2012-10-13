@@ -7,6 +7,7 @@ describe User do
     it { should be_valid }
   end
 
+  it { should have_many :passengers_trips }
   it { should have_many :trips }
-  it { should belong_to :trip }
+  it { should have_one :trip }
 end

@@ -1,10 +1,13 @@
 class Trip < ActiveRecord::Base
-  has_many :proposals
 
-  attr_accessible :driver_id, :starts_at
+  attr_accessible :driver_id, :starts_at, :driver
+  attr_accessor :driver
 
   belongs_to :driver, class_name: "User"
-  has_many :passengers, class_name: "User"
+  has_many :passengers_trips
+  has_many :passengers, through: :passengers_trips, class_name: "User", foreign_key: :passenger_id
+
+  accepts_nested_attributes_for :passengers_trips
 
   def owner
     driver || passengers.first

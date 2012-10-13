@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013100630) do
+ActiveRecord::Schema.define(:version => 20121013105603) do
+
+  create_table "passengers_trips", :force => true do |t|
+    t.integer  "passenger_id"
+    t.integer  "trip_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "proposals", :force => true do |t|
     t.integer  "sender_id"
@@ -52,7 +59,6 @@ ActiveRecord::Schema.define(:version => 20121013100630) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.integer  "trip_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

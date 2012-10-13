@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  belongs_to :trip
-  has_many :trips, foreign_key: :driver_id
+  has_one :trip, as: :driver
+  has_many :passengers_trips, as: :passenger
+  has_many :trips, through: :passengers_trips
 end
