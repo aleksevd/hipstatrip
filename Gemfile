@@ -55,3 +55,4 @@ group :development do
 end
 
 gem 'inherited_resources'
+gem "geocoder"
