@@ -1,4 +1,6 @@
 class Proposal < ActiveRecord::Base
+  attr_accessible :comments_attributes
+
   belongs_to :sender, class_name: :User
   belongs_to :receiver, class_name: :User
   belongs_to :trip
@@ -7,6 +9,8 @@ class Proposal < ActiveRecord::Base
   validates_presence_of :sender
   validates_presence_of :receiver
   validates_presence_of :trip
+
+  accepts_nested_attributes_for :comments
 
   def accept!
     update_column :state, 1

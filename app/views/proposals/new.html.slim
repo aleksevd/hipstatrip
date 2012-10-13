@@ -1,4 +1,6 @@
 h1 Create a new Proposal
 
 = simple_form_for [@trip, @proposal] do |f|
+  = f.simple_fields_for :comments do |form|
+    = form.input :text, as: :text, label: false
   = f.button :submit

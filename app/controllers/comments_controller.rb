@@ -1,13 +1,18 @@
 class CommentsController < ApplicationController
   def create
-    @trip = Trip.find(params[:trip_id])
+    @owner_class = params[:owner].constantize
+
+    @owner = @owner_class.find(params["#{params[:owner].underscore}_id".to_sym])
     @comment = Comment.new(params[:comment])
-    @comment.owner = @trip
+    @comment.owner = @owner
+
+    @trip = @owner
+    @proposal = @owner
 
     if @comment.save
       redirect_to :back, notice: "Comment added!"
     else
-      render "trips/show", alert: "Failed to add comment"
+      render "#{params[:type].underscore}/show", alert: "Failed to add comment"
     end
   end
 end

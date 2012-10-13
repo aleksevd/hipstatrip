@@ -1,7 +1,7 @@
 class Trip < ActiveRecord::Base
 
-  attr_accessible :driver_id, :starts_at, :driver
-  attr_accessor :driver
+  attr_accessible :driver_id, :starts_at, :is_driver, :comments_attributes
+  attr_accessor :is_driver
 
   belongs_to :driver, class_name: "User"
   has_many :passengers_trips

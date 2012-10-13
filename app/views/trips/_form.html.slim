@@ -1,4 +1,4 @@
 = simple_form_for @trip do |f|
   = f.input :starts_at
-  = f.collection_radio_buttons :driver, [[true, 'Driver'] ,[false, 'Passenger']], :first, :last
+  = f.collection_radio_buttons :is_driver, [[true, 'Driver'] ,[false, 'Passenger']], :first, :last
   = f.button :submit

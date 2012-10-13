@@ -1,6 +1,17 @@
 class ProposalsController < InheritedResources::Base
   belongs_to :trip
-  actions :new, :create
+  actions :new, :create, :show
+
+  def new
+    @proposal = Proposal.new
+    @proposal.comments.build
+    new!
+  end
+
+  def show
+    @proposal = Proposal.find(params[:id])
+    show!
+  end
 
   def create
     @proposal = Proposal.new(params[:proposal])

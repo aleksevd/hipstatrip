@@ -1,0 +1,7 @@
+h1 View Proposal
+
+ul
+  = render @proposal.comments
+
+h5 Leave a comment
+= render "comments/form", owner: "Proposal"

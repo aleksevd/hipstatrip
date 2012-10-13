@@ -9,7 +9,7 @@ class TripsController < InheritedResources::Base
   def create
     @trip = Trip.new(params[:trip])
 
-    if @trip.driver == 'true'
+    if @trip.is_driver == 'true'
       @trip.driver_id = current_user.id
     else
       @trip.passengers_trips.build(passenger_id: current_user.id)
