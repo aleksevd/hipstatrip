@@ -1,8 +1,14 @@
 h1 Trips
 
-= link_to "New trip", new_trip_path, class: "btn btn-primary"
+- unless params[:my_trips]
+  = link_to "Show my trips", trips_path(my_trips: true)
+  br
+  = link_to "New trip", new_trip_path, class: "btn btn-primary"
 
-= render "form"
+  = render "form"
+
+- else
+  =link_to "Show all trips"
 
 table
   = render @trips

@@ -4,8 +4,12 @@ class TripsController < InheritedResources::Base
   actions :all, except: [:index, :create]
 
   def index
-    @trips = Trip.all
-    @trip = Trip.new
+    if params[:my_trips] == 'true'
+      @trips = current_user.all_trips
+    else
+      @trips = Trip.all
+      @trip = Trip.new
+    end
   end
 
   def create
