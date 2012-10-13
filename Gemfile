@@ -47,6 +47,7 @@ gem "simple_form", ">= 2.0.4"
 
 group :test do
   gem "shoulda-matchers"
+  gem "database_cleaner"
 end
 
 group :development do
