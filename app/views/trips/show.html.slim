@@ -3,4 +3,14 @@ h1 Trip
 p
   = "Starts_at: "
   = @trip.starts_at
+
+h2 Proposals
+ul
+  - @trip.proposals.each do |proposal|
+    li
+      = proposal.id
+      = proposal.state
+      = link_to "Accept", [proposal, :accept], method: :post
+      = link_to "Cancel", [proposal, :cancel], method: :post
+
 = link_to "Show trips", :back

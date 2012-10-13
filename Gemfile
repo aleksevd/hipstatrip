@@ -45,6 +45,8 @@ gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.0.4"
 
+gem "active_attr"
+
 group :test do
   gem "shoulda-matchers"
   gem "database_cleaner"
