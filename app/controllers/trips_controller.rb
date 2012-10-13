@@ -21,4 +21,8 @@ class TripsController < InheritedResources::Base
       render :index
     end
   end
+
+  def show
+    @trip = TripDecorator.find(params[:id])
+  end
 end

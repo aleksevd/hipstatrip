@@ -17,10 +17,10 @@ h2 Proposals
 ul
   - @trip.proposals.each do |proposal|
     li
-      = proposal.id
-      = proposal.state
-      = link_to "Accept", [proposal, :accept], method: :post
-      = link_to "Cancel", [proposal, :cancel], method: :post
+      span= proposal.description
+      b= proposal.state_name
+      span= link_to "Accept", [proposal, :accept], method: :post
+      span= link_to "Cancel", [proposal, :cancel], method: :post
 
 h3 Comments
 ul
