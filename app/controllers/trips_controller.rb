@@ -1,5 +1,5 @@
 class TripsController < InheritedResources::Base
-  actions :all, except: [:new, :index, :create]
+  actions :all, except: [:index, :create]
 
   def index
     @trips = Trip.all

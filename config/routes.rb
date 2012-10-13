@@ -6,7 +6,7 @@ HipstaTrip::Application.routes.draw do
 
   root to: "trips#index"
 
-  resources "trips", except: :new do
+  resources "trips" do
     resources :proposals, only: %w[new create show]
     resources :comments, only: :create
   end

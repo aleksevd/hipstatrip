@@ -1,6 +1,6 @@
 class Trip < ActiveRecord::Base
 
-  attr_accessible :driver_id, :starts_at, :is_driver, :comments_attributes
+  attr_accessible :driver_id, :starts_at, :is_driver, :comments_attributes, :start_address, :end_address
   attr_accessor :is_driver
 
   belongs_to :driver, class_name: "User"
