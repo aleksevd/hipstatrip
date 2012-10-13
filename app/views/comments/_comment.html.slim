@@ -1,1 +1,3 @@
-li = comment.text
+li
+  = "(#{comment.user.try(:email)}) : "
+  = comment.text

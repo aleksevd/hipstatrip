@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @owner = @owner_class.find(params["#{params[:owner].underscore}_id".to_sym])
     @comment = Comment.new(params[:comment])
     @comment.owner = @owner
+    @comment.user_id = current_user.id
 
     @trip = @owner
     @proposal = @owner

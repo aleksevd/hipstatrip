@@ -21,6 +21,7 @@ class ProposalsController < InheritedResources::Base
     Rails.logger.info "*" * 100
     logger.info @trip.inspect
     @proposal.sender = current_user
-    create!
+    @proposal.comments.first.user_id = current_user.id
+    create! { @trip }
   end
 end

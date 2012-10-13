@@ -10,4 +10,5 @@ describe User do
   it { should have_many :passengers_trips }
   it { should have_many :trips }
   it { should have_one :trip }
+  it { should have_many :comments }
 end

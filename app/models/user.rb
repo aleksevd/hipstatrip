@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_one :trip, as: :driver
   has_many :passengers_trips, as: :passenger
   has_many :trips, through: :passengers_trips
+  has_many :comments
 
   def to_s
     email
