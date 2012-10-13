@@ -14,7 +14,7 @@ describe Proposal do
     it { should validate_presence_of(:trip) }
   end
 
-  describe "#accept!", :focus do
+  describe "#accept!" do
     let(:driver) { create(:user) }
     let(:passenger) { create(:user) }
 
