@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20121013100630) do
     t.integer  "state"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "trip_id"
   end
 
   create_table "trips", :force => true do |t|
