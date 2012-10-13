@@ -35,6 +35,10 @@ describe Proposal do
         expect { proposal1.accept! }.to change { Proposal.count }.from(2).to(1)
       end
 
+      specify "seats_occupied should increment by 1" do
+        expect { proposal1.accept! }.to change { proposal1.trip.seats_occupied }.from(nil).to(1)
+      end
+
       specify "all other proposals are canceled"
     end
 
@@ -52,6 +56,19 @@ describe Proposal do
         trip.reload
         trip.passengers.should == [passenger]
       end
+
+      specify "seats_occupied should increment by 1" do
+        expect { proposal.accept! }.to change { proposal.trip.seats_occupied }.from(nil).to(1)
+      end
+    end
+  end
+
+  describe "#reject!" do
+    let(:trip) { create(:trip, driver: driver) }
+    let(:proposal) { create(:proposal, sender: passenger, receiver: driver, trip: trip) }
+    it "should decrement trips seats_occupied by 1" do
+      proposal.accept!
+      expect { proposal.reject! }.to change { proposal.trip.seats_occupied }.from(1).to(0)
     end
   end
 end
