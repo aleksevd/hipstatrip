@@ -14,13 +14,16 @@ p
       = passenger.email
 
 h2 Proposals
-ul
+
+ul.proposals
   - @trip.proposals.each do |proposal|
     li
+      span.label.label-info= proposal.state_name
       span= proposal.description
-      b= proposal.state_name
-      span= link_to "Accept", [proposal, :accept], method: :post
-      span= link_to "Cancel", [proposal, :cancel], method: :post
+
+      span= link_to "Accept", [proposal, :accept], method: :post, class: "btn btn-success"
+
+      span= link_to "Cancel", [proposal, :cancel], method: :post, class: "btn btn-danger"
 
 h3 Comments
 ul
