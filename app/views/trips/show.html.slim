@@ -9,6 +9,13 @@ p
     = "Driver: "
     = @trip.driver.try(:email)
   p
+    = "Seats occupied: "
+    = @trip.seats_occupied
+  - if @trip.seats_occupied
+    p
+      = "Seats available: "
+      = @trip.seats
+  p
     = "Passengers"
   ul
     - @trip.passengers.each do |passenger|

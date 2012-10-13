@@ -22,10 +22,13 @@ class Proposal < ActiveRecord::Base
     else
       trip.passengers << sender
     end
+
+    trip.update_attributes(seats_occupied: trip.seats_occupied.to_i + 1)
   end
 
   def cancel!
     update_column :state, 2
+    trip.update_attributes(seats_occupied: trip.seats_occupied.to_i - 1)
   end
 
 

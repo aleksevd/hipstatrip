@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013142757) do
+ActiveRecord::Schema.define(:version => 20121013164924) do
 
   create_table "comments", :force => true do |t|
     t.string   "text"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20121013142757) do
     t.float    "start_longitude"
     t.float    "end_latitude"
     t.float    "end_longitude"
+    t.integer  "seats_occupied"
+    t.integer  "seats"
   end
 
   create_table "users", :force => true do |t|
