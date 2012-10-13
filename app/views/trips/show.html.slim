@@ -8,6 +8,7 @@ p
   p
     = "Driver: "
     = @trip.driver.try(:email)
+    = gravatar_image_tag(current_user)
   p
     = "Seats occupied: "
     = @trip.seats_occupied
