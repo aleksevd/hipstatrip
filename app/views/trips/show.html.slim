@@ -4,14 +4,19 @@ p
   = "Starts_at: "
   = @trip.starts_at
 
-p
-  = "Driver: "
-  = @trip.driver.try(:email)
-p
-  = "Passengers"
+- if @trip.driver_type?
+  p
+    = "Driver: "
+    = @trip.driver.try(:email)
+  p
+    = "Passengers"
   ul
     - @trip.passengers.each do |passenger|
       = passenger.email
+- else
+  p
+    = "Passenger "
+    =@trip.owner.email
 
 span= link_to "Make proposal", new_trip_proposal_path(@trip), class: "btn btn-success"
 

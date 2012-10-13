@@ -14,4 +14,8 @@ class Trip < ActiveRecord::Base
   def owner
     driver || passengers.first
   end
+
+  def driver_type?
+    driver_id.present?
+  end
 end
