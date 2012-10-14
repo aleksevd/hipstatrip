@@ -19,7 +19,7 @@ pid "/tmp/unicorn.hipsta_trip.pid"
 working_directory "/home/hipster/hipsta_trip/current"
 
 # feel free to point this anywhere accessible on the filesystem
-user "hipsta"
+user "hipster"
 shared_path = "/home/hipster/hipsta_trip/shared"
 
 stderr_path "#{shared_path}/log/unicorn.stderr.log"
