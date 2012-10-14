@@ -11,6 +11,8 @@ html
 
     = csrf_meta_tags
 
+    = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
+
   body
     .container
       == yield
