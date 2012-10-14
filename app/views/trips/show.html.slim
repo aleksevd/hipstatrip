@@ -8,7 +8,7 @@ p
   p
     = "Driver: "
     = @trip.driver.try(:email)
-    = gravatar_image_tag(current_user)
+    = gravatar_image_tag(@trip.driver)
   p
     = "Seats occupied: "
     = @trip.seats_occupied
@@ -28,7 +28,7 @@ p
     = "Passenger "
     =@trip.owner.email
 
-- unless (@trip.owner == current_user) || current_user.requested_trip?(@trip)
+- unless (@trip.owner == current_user) || (current_user && current_user.requested_trip?(@trip))
   span= link_to "Make proposal", new_trip_proposal_path(@trip), class: "btn btn-success"
 
 - if can? :destroy, @trip
