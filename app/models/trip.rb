@@ -9,6 +9,8 @@ class Trip < ActiveRecord::Base
   has_many :comments, as: :owner, dependent: :destroy
   has_many :proposals, dependent: :destroy
 
+  scope :passenger_type, where(driver_id: nil).includes(:passengers_trips)
+
   validates :seats, allow_nil: true,
                     numericality: { only_integer: true,
                                     greater_than_or_equal_to: 0 },
@@ -43,5 +45,9 @@ class Trip < ActiveRecord::Base
 
   def self.search_range
     20_000
+  end
+
+  def has_passenger?(passenger)
+    passengers_trips.find_by_passenger_id(passenger.id).present?
   end
 end

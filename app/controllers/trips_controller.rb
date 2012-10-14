@@ -28,6 +28,6 @@ class TripsController < InheritedResources::Base
 
   def show
     @trip = TripDecorator.find(params[:id])
-    @proposals = ProposalDecorator.decorate(@trip.proposals.visible_for(current_user))
+    @proposals = ProposalDecorator.decorate(@trip.proposals)
   end
 end
