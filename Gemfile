@@ -57,7 +57,6 @@ end
 
 group :development do
   gem "capistrano"
-  gem "pry-rails"
   gem 'mailcatcher'
 end
 
