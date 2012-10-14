@@ -1,13 +1,14 @@
-class Proposal::AcceptsController < InheritedResources::Base
-  actions :create
+class Proposal::AcceptsController < ActionController::Base
 
   def create
-    create! { @accept.trip }
-  end
-
-protected
-
-  def build_resource
     @accept = Proposal::Accept.new(params.slice(:proposal_id))
+
+    if @accept.save
+      flash[:notice] = "Request accepted successfully"
+    else
+      flash[:alert] = @accept.errors.full_messages
+    end
+
+    redirect_to @accept.trip
   end
 end

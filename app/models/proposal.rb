@@ -1,5 +1,5 @@
 class Proposal < ActiveRecord::Base
-  attr_accessible :comments_attributes
+  attr_accessible :comments_attributes, :sender, :receiver, :trip
 
   belongs_to :sender, class_name: :User
   belongs_to :receiver, class_name: :User
@@ -13,7 +13,6 @@ class Proposal < ActiveRecord::Base
   after_create :send_mail
 
   accepts_nested_attributes_for :comments
-  attr_accessible :sender, :receiver, :trip
 
   def accept!
     update_column :state, 1
@@ -31,6 +30,11 @@ class Proposal < ActiveRecord::Base
 
   def cancel!
     update_column :state, 2
+
+    unless driver?
+      trip.passengers_trips.where(passenger_id: sender_id).destroy_all
+    end
+
     trip.update_attributes(seats_occupied: trip.seats_occupied.to_i - 1)
 
     ProposalMailer.cancelation(trip, sender).deliver
