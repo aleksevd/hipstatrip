@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :comments
 
   def to_s
-    email
+    name || "Unknown Hipster"
   end
 
   def all_trips
