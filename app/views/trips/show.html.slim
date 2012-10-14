@@ -14,6 +14,10 @@ h1
 
 .trip-map= @trip.route_map
 
+- if @trip.description.present?
+  h2 Trip Description
+  textarea.hipster_description= @trip.description
+
 - if @trip.driver_type?
   h2 #{@trip.driver.try(:name)} is going to be driver for this trip
 
@@ -43,7 +47,6 @@ h1
 
 - else
   h2 Requests
-
 
   ul.proposals
     - @proposals.each do |proposal|

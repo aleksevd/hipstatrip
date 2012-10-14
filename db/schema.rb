@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014195408) do
+ActiveRecord::Schema.define(:version => 20121014221017) do
 
   create_table "comments", :force => true do |t|
     t.string   "text"
@@ -41,15 +41,16 @@ ActiveRecord::Schema.define(:version => 20121014195408) do
   create_table "trips", :force => true do |t|
     t.integer  "driver_id"
     t.datetime "starts_at"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
     t.string   "start_address"
     t.string   "end_address"
-    t.point    "origin",         :limit => 0,                 :srid => 4326, :geographic => true
-    t.point    "destination",    :limit => 0,                 :srid => 4326, :geographic => true
+    t.point    "origin",         :limit => 0,                                    :srid => 4326, :geographic => true
+    t.point    "destination",    :limit => 0,                                    :srid => 4326, :geographic => true
     t.integer  "seats_occupied"
     t.integer  "seats"
     t.boolean  "complete",                    :default => false, :null => false
+    t.text     "description",                 :default => ""
   end
 
   create_table "users", :force => true do |t|
