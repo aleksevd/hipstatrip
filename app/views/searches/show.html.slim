@@ -6,17 +6,6 @@
       li.text Are you a
       li.button(role="pushable")
         - if @search.driver
-          = f.radio_button :driver, 1, checked: true
-        - else
-          = f.radio_button :driver, 1
-        = link_to "#", class: "coolHandLuke_pressed" do
-          = image_tag "btn-driver.png"
-          |
-            Driver
-
-      li.text or a
-      li.button(role="pushable")
-        - if @search.driver
           = f.radio_button :driver, 0
         - else
           = f.radio_button :driver, 0, checked: true
@@ -24,6 +13,16 @@
           = image_tag "btn-passenger.png"
           |
             Passenger
+      li.text or a
+      li.button(role="pushable")
+        - if @search.driver
+          = f.radio_button :driver, 1, checked: true
+        - else
+          = f.radio_button :driver, 1
+        = link_to "#", class: "coolHandLuke_pressed" do
+          = image_tag "btn-driver.png"
+          |
+            Driver
       li.text ?
 
     .search-form__origin-container

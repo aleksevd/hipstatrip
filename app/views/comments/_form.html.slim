@@ -1,4 +1,4 @@
 = simple_form_for [@proposal || @trip, Comment.new] do |f|
   = hidden_field_tag :owner, owner
-  = f.input :text, as: :text,  label: false
-  = f.button :submit
+  = f.input :text, as: :text, label: false, :input_html => { :cols => 80, :rows => 10 }
+  = f.button :submit, class: "btn btn-large btn-primary"

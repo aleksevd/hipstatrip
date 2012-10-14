@@ -1,16 +1,16 @@
-h1= @trip.route
+h1
+  = @trip.route
+  
+  - if current_user
+    - if can? :destroy, @trip
+      span= link_to "Destroy trip", @trip, method: :delete, class: "fancy-button fancy-button_stripe fancy-button_stripe-red"
 
-= @trip.route_map
-= @trip.origin.inspect
-
-p
-  = "Starts_at: "
-  = @trip.starts_at
+.trip-map= @trip.route_map
 
 - if @trip.driver_type?
   p
     = "Driver: "
-    = @trip.driver.try(:email)
+    = @trip.driver.try(:name)
     = gravatar_image_tag(@trip.driver)
   p
     = "Seats occupied: "
@@ -26,20 +26,29 @@ p
       - @trip.passengers.each do |passenger|
        ul
          li
-           = passenger.email
+           = passenger.name
 - else
-  p
-    = "Passenger "
-    =@trip.owner.email
+  h2
+    = "Trip owner: "
+    = @trip.owner.name
+  h2
+    | There is no driver for this trip yet.
+    - unless current_user.try(:id) == @trip.owner.id
+      | Want to be a driver? Create a request to trip owner!
 
 - unless (@trip.owner == current_user) || (current_user && current_user.requested_trip?(@trip))
-  span= link_to "Make proposal", new_trip_proposal_path(@trip), class: "btn btn-success"
+  span= link_to "Make a request to join this trip", new_trip_proposal_path(@trip), class: "btn btn-success"
 
-- if current_user
-  - if can? :destroy, @trip
-    span= link_to "Destroy trip", @trip, method: :delete, class: "btn btn-danger"
 
-  h2 Proposals
+- if @proposals.empty?
+  h2
+    | No one requested to join this trip yet
+    - unless current_user.try(:id) == @trip.owner.id
+      | Make a request to trip owner if you want to participate
+
+- else
+  h2 Requests
+
 
   ul.proposals
     - @proposals.each do |proposal|
@@ -56,11 +65,11 @@ p
           - if proposal.state != 2 && proposal.belongs_to_user?(current_user)
             span= link_to "Cancel", [proposal, :cancel], method: :post, class: "btn btn-danger"
 
-h3 Comments
-ul
-  = render @trip.comments if @trip.comments
+- if @trip.comments.empty?
+  | No one commented on this trip yet. If you want to discuss trip details in private, create a request to trip owner and negotiate conditions inside the request.
+- else
+  h3 Comments
+  ul
+    = render @trip.comments if @trip.comments
 
-h4 Leave a comment
 = render "comments/form", owner: "Trip"
-
-= link_to "Show trips", root_path, class: "btn btn-primary"
