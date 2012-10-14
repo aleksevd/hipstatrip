@@ -1,5 +1,5 @@
 class TripMailer < ActionMailer::Base
-  default :from => "notifications@hipstatrip.com"
+  default :from => "no-reply@binarycode.r12.railsrumble.com"
 
   def cancelation(passenger)
     @passenger = passenger

@@ -1,5 +1,5 @@
 class ProposalMailer < ActionMailer::Base
-  default :from => "notifications@hipstatrip.com"
+  default :from => "no-reply@binarycode.r12.railsrumble.com"
 
   def new_proposal(trip, user)
     @url  = url_for(trip)

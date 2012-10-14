@@ -1,13 +1,9 @@
 class TripsController < InheritedResources::Base
   actions :all, except: [:index, :create]
+  before_filter :authenticate_user!, except: :show
 
   def index
-    if params[:my_trips] == 'true'
-      @trips = current_user.all_trips
-    else
-      @trips = Trip.all
-      @trip = Trip.new
-    end
+    @trips = current_user.all_trips
   end
 
   def create
