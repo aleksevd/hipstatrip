@@ -22,6 +22,10 @@ class TripsController < InheritedResources::Base
     end
   end
 
+  def update
+    update!(:notice => "Trip is comleted!") { trips_path }
+  end
+
   def show
     @trip = TripDecorator.find(params[:id])
     @proposals = ProposalDecorator.decorate(@trip.proposals)

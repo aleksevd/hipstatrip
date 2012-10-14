@@ -9,6 +9,7 @@ class Proposal < ActiveRecord::Base
   validates_presence_of :sender
   validates_presence_of :receiver
   validates_presence_of :trip
+  validate :different_receiver_and_sender
 
   after_create :send_mail
 
@@ -59,5 +60,11 @@ private
 
   def send_mail
     ProposalMailer.new_proposal(trip, receiver).deliver
+  end
+
+  def different_receiver_and_sender
+    if sender_id == receiver_id
+      self.errors.add(:same_receiver_and_sender, "Reseiver And Sender can't be same.")
+    end
   end
 end

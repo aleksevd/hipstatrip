@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
     email.split("@").first rescue ""
   end
 
-  def requested_trip?(trip)
-    (trip.proposals.map(&:sender_id) + trip.proposals.map(&:receiver_id)).include?(id)
+  def opened_proposals_on_trip?(trip)
+    open_trip_proposals = trip.proposals.where("(proposals.state != 2) OR (proposals.state IS NULL)")
+    open_trip_proposals.where(sender_id: id).first.present? || open_trip_proposals.where(receiver_id: id).first.present?
   end
 end

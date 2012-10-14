@@ -1,6 +1,6 @@
 class Trip < ActiveRecord::Base
   attr_accessible :driver_id, :starts_at, :is_driver, :comments_attributes,
-                  :start_address, :end_address, :seats, :seats_occupied
+                  :start_address, :end_address, :seats, :seats_occupied, :complete
   attr_accessor :is_driver
 
   belongs_to :driver, class_name: "User"
@@ -9,6 +9,7 @@ class Trip < ActiveRecord::Base
   has_many :comments, as: :owner, dependent: :destroy
   has_many :proposals, dependent: :destroy
 
+  default_scope where(complete: false)
   scope :passenger_type, where(driver_id: nil).includes(:passengers_trips)
 
   validates :seats, allow_nil: true,
@@ -68,6 +69,10 @@ class Trip < ActiveRecord::Base
 private
 
   def geocode(value)
+<<<<<<< HEAD
+=======
+    #return nil
+>>>>>>> bugs fixed
     return nil unless value.present?
 
     coords = Geocoder.coordinates(value)
