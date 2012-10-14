@@ -58,10 +58,10 @@ h1
           span= link_to "View", [@trip, proposal], class: "btn btn-primary"
 
           - if proposal.state.nil? && @trip.owner == current_user
-            span= link_to "Accept", [proposal, :accept], method: :post, class: "btn btn-success"
+            span= link_to "Accept", [proposal, :accept], method: :post, class: "fancy-button fancy-button_stripe fancy-button_stripe-green"
 
           - if proposal.state != 2 && proposal.belongs_to_user?(current_user)
-            span= link_to "Cancel", [proposal, :cancel], method: :post, class: "btn btn-danger"
+            span= link_to "Cancel", [proposal, :cancel], method: :post, class: "fancy-button fancy-button_stripe fancy-button_stripe-red"
 
 - if @trip.comments.empty?
   h2 No one commented on this trip yet. If you want to discuss trip details in private, create a request to trip owner and negotiate conditions inside the request.
