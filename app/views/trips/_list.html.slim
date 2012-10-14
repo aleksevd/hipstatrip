@@ -1,0 +1,10 @@
+.trip-list
+  - trips.each do |trip|
+    = link_to trip, class: "trip-list__item" do
+      .trip-list__item__photo= gravatar_image_tag(trip.owner)
+      .trip-list__item__route a > b
+      .trip-list__item__date.label.label-info= l trip.starts_at, format: :short
+      .trip-list__item__description
+      .trip-list__item__button.fancy-button.fancy-button_stripe.fancy-button_stripe-green View
+
+  .clear

@@ -4,7 +4,9 @@ HipstaTrip::Application.routes.draw do
 
   devise_for :users
 
-  root to: "trips#index"
+  root to: "searches#show"
+
+  resource :search, only: :show
 
   resources "trips" do
     resources :proposals, only: %w[new create show]

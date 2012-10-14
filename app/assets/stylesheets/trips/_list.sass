@@ -1,0 +1,38 @@
+.trip-list
+  a
+    color: #000
+
+.trip-list__item
+  +inline-block
+  +border-radius(3px)
+  border: 1px solid #aaa
+  width: 440px
+  height: 90px
+  margin-bottom: 20px
+  padding: 10px
+  border-bottom-width: 2px
+  position: relative
+
+  &:nth-child(even)
+    float: right
+
+  &:nth-child(odd)
+    float: left
+
+.trip-list__item__photo
+  width: 90px
+  height: 90px
+  float: left
+  background: red
+  margin-right: 10px
+
+.trip-list__item__route
+  font-weight: bold
+
+.trip-list__item__date
+  position: absolute
+  right: -1px
+  top: -1px
+
+.trip-list__item__button
+  +position($right: 5px, $bottom: 10px)

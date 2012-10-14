@@ -1,0 +1,26 @@
+.search-form-container
+  h2 Hi! Going somewhere?
+  ul.coolHandLuke.coolHandLukeSimple
+    li.text Are you a
+    li.button
+      = link_to "#" do
+        = image_tag "btn-driver.png"
+        |
+          Driver
+
+    li.text or a
+    li.button
+      = link_to "#" do
+        = image_tag "btn-passenger.png"
+        |
+          Passenger
+    li.text ?
+
+  = simple_form_for @search, url: "/", method: "get" do |f|
+    = f.input :origin_address, placeholder: "Where do you go from?", input_html: { class: "search-form__origin" }
+    = f.input :destination_address, placeholder: "Where are you going to?", input_html: { class: "search-form__destination" }
+
+    .submit-container
+      = f.submit "Find who else is going there!", class: "btn btn-primary btn-large"
+
+= render "trips/list", trips: @search.trips

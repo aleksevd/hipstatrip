@@ -1,34 +1,3 @@
-.fancy-map
-  h2 Hi! Going somewhere?
-  ul.coolHandLuke.coolHandLukeSimple
-    li.text Are you a
-    li.button
-      = link_to "#" do
-        = image_tag "btn-driver.png"
-        |
-          Driver
+h1 My Trips
 
-    li.text or a
-    li.button
-      = link_to "#" do
-        = image_tag "btn-passenger.png"
-        |
-          Passenger
-    li.text ?
-
-  = simple_form_for @trip do |f|
-    = f.input :start_address, placeholder: "Where do you go from?"
-    = f.input :end_address, placeholder: "Where are you going to?"
-    .submit-container
-      = f.submit "Find who else is going there!", class: "btn btn-primary btn-large"
-
-.trip-list
-  - @trips.each do |trip|
-    = link_to trip, class: "trip-list__item" do
-      .trip-list__item__photo= gravatar_image_tag(trip.owner)
-      .trip-list__item__route a > b
-      .trip-list__item__date.label.label-info= l trip.starts_at, format: :short
-      .trip-list__item__description
-      .trip-list__item__button.fancy-button.fancy-button_stripe.fancy-button_stripe-green View
-
-  .clear
+= render "trips/list", trips: @trips
