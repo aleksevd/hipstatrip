@@ -1,9 +1,7 @@
 = simple_form_for @trip do |f|
   = f.collection_radio_buttons :is_driver, [[false, 'Passenger'], [true, 'Driver']], :first, :last, checked: false
-  .start_address
-    = f.input :start_address
-  .end_address
-    = f.input :end_address
+  = f.input :start_address
+  = f.input :end_address
   = f.input :starts_at
 
   = render "editional_fields", f: f
