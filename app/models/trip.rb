@@ -1,5 +1,5 @@
 class Trip < ActiveRecord::Base
-  paginates_per 10
+  paginates_per 20
 
   attr_accessible :driver_id, :starts_at, :is_driver, :comments_attributes,
                   :start_address, :end_address, :seats, :seats_occupied, :complete, :description
