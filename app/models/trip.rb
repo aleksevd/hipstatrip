@@ -5,14 +5,14 @@ class Trip < ActiveRecord::Base
   attr_accessor :is_driver
 
   belongs_to :driver, class_name: "User"
-  has_many :passengers_trips
+  has_many :passengers_trips, dependent: :destroy
   has_many :passengers, through: :passengers_trips, class_name: "User", foreign_key: :passenger_id
-  has_many :comments, as: :owner
-  has_many :proposals
+  has_many :comments, as: :owner, dependent: :destroy
+  has_many :proposals, dependent: :destroy
 
   validates :seats, allow_nil: true,
                     numericality: { only_integer: true,
-                                    greater_than_or_equal_to: 0},
+                                    greater_than_or_equal_to: 0 },
                     if: :driver_type?
 
   accepts_nested_attributes_for :passengers_trips

@@ -3,4 +3,12 @@ class PassengersTrip < ActiveRecord::Base
 
   belongs_to :passenger, class_name: "User"
   belongs_to :trip
+
+  before_destroy :send_email
+
+  private
+
+  def send_email
+    TripMailer.cancelation(passenger).deliver
+  end
 end

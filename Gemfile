@@ -55,6 +55,7 @@ end
 
 group :development do
   gem "pry-rails"
+  gem 'mailcatcher'
 end
 
 gem 'inherited_resources'

@@ -10,6 +10,8 @@ class Proposal < ActiveRecord::Base
   validates_presence_of :receiver
   validates_presence_of :trip
 
+  after_create :send_mail
+
   accepts_nested_attributes_for :comments
   attr_accessible :sender, :receiver, :trip
 
@@ -24,11 +26,14 @@ class Proposal < ActiveRecord::Base
     end
 
     trip.update_attributes(seats_occupied: trip.seats_occupied.to_i + 1)
+    ProposalMailer.acceptance(trip, sender).deliver
   end
 
   def cancel!
     update_column :state, 2
     trip.update_attributes(seats_occupied: trip.seats_occupied.to_i - 1)
+
+    ProposalMailer.cancelation(trip, sender).deliver
   end
 
 
@@ -41,5 +46,9 @@ private
 
   def driver?
     trip.driver_id.nil?
+  end
+
+  def send_mail
+    ProposalMailer.new_proposal(trip, receiver).deliver
   end
 end

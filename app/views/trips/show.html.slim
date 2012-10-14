@@ -20,13 +20,16 @@ p
     = "Passengers"
   ul
     - @trip.passengers.each do |passenger|
-      = passenger.email
+     ul
+       li
+         = passenger.email
 - else
   p
     = "Passenger "
     =@trip.owner.email
 
 span= link_to "Make proposal", new_trip_proposal_path(@trip), class: "btn btn-success"
+span= link_to "Destroy trip", @trip, method: :delete, class: "btn btn-danger"
 
 h2 Proposals
 

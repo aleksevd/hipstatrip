@@ -63,12 +63,15 @@ describe Proposal do
     end
   end
 
-  describe "#reject!" do
+  describe "#cancel!" do
+    let(:driver) { create(:user) }
+    let(:passenger) { create(:user) }
     let(:trip) { create(:trip, driver: driver) }
     let(:proposal) { create(:proposal, sender: passenger, receiver: driver, trip: trip) }
+
     it "should decrement trips seats_occupied by 1" do
       proposal.accept!
-      expect { proposal.reject! }.to change { proposal.trip.seats_occupied }.from(1).to(0)
+      expect { proposal.cancel! }.to change { proposal.trip.seats_occupied }.from(1).to(0)
     end
   end
 end
