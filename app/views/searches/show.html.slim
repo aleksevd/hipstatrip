@@ -5,7 +5,7 @@
     ul.coolHandLuke.coolHandLukeSimple
       li.text Are you a
       li.button(role="pushable")
-        - if @search.driver
+        - if (@search.driver.to_s == "true") || (@search.driver.to_s == "1")
           = f.radio_button :driver, 0
         - else
           = f.radio_button :driver, 0, checked: true
@@ -15,7 +15,7 @@
             Passenger
       li.text or a
       li.button(role="pushable")
-        - if @search.driver
+        - if (@search.driver.to_s == "true") || (@search.driver.to_s == "1")
           = f.radio_button :driver, 1, checked: true
         - else
           = f.radio_button :driver, 1
