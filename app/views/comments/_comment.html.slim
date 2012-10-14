@@ -1,3 +1,4 @@
-li
-  = "(#{comment.user.try(:name)}) : "
-  = comment.text
+.comment-box
+  .comment-box__photo= gravatar_image_tag(comment.user) rescue ""
+  .comment-box__name= comment.user
+  .comment-box__body= comment.text

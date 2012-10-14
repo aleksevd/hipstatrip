@@ -3,4 +3,4 @@ h1 Create a new Proposal
 = simple_form_for [@trip, @proposal] do |f|
   = f.simple_fields_for :comments do |form|
     = form.input :text, as: :text, label: false, input_html: { class: "hipster_description" }
-  = f.button :submit
+  = f.button :submit, class: "btn btn-large btn-primary"

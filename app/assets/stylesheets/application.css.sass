@@ -10,6 +10,58 @@
 @import searches
 @import trips
 
+.comment-box
+  +inline-block
+  +border-radius(3px)
+  border: 1px solid #aaa
+  width: 440px
+  height: 90px
+  margin-bottom: 20px
+  padding: 10px
+  border-bottom-width: 2px
+  position: relative
+  background: #fff
+  overflow: hidden
+
+.comment-box__name
+  font-weight: bold
+
+.comment-box__photo
+  width: 90px
+  height: 90px
+  float: left
+  background: #888
+  margin-right: 10px
+
+.proposal-box
+  +inline-block
+  +border-radius(3px)
+  border: 1px solid #aaa
+  width: 440px
+  height: 90px
+  margin-bottom: 20px
+  padding: 10px
+  border-bottom-width: 2px
+  position: relative
+  background: #fff
+  overflow: hidden
+
+.proposal-box__state
+  +position($right: -1px, $top: -1px)
+
+.proposal-box__description
+  font-weight: bold
+
+.proposal-box__photo
+  width: 90px
+  height: 90px
+  float: left
+  background: #888
+  margin-right: 10px
+
+.proposal-box__button
+  margin: 15px 0
+
 html, body
   background: image_url("bg.jpg")
 

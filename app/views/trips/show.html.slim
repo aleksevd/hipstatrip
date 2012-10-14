@@ -48,26 +48,28 @@ h1
 - else
   h2 Requests
 
-  ul.proposals
-    - @proposals.each do |proposal|
-      - if can? :read, proposal
-        li
-          span.label.label-info= proposal.state_name
-          span= proposal.description
+  - @proposals.each do |proposal|
+    - if can? :read, proposal
+      .proposal-box
+        .proposal-box__photo= gravatar_image_tag(proposal.sender) rescue ""
+        .proposal-box__state.label.label-info= proposal.state_name
+        .proposal-box__description= proposal.description
 
-          span= link_to "View comments", [@trip, proposal], class: "fancy-button fancy-button_stripe fancy-button_stripe-green"
+        .proposal-box__button= link_to "View comments", [@trip, proposal], class: "fancy-button fancy-button_stripe fancy-button_stripe-green"
 
+        .proposal-box__button
           - if proposal.state.nil? && @trip.owner == current_user
-            span= link_to "Accept request", [proposal, :accept], method: :post, class: "fancy-button fancy-button_stripe fancy-button_stripe-green"
+            = link_to "Accept request", [proposal, :accept], method: :post, class: "fancy-button fancy-button_stripe fancy-button_stripe-green"
 
           - if proposal.state != 2 && proposal.belongs_to_user?(current_user)
-            span= link_to "Cancel request", [proposal, :cancel], method: :post, class: "fancy-button fancy-button_stripe fancy-button_stripe-red"
+            = link_to "Cancel request", [proposal, :cancel], method: :post, class: "fancy-button fancy-button_stripe fancy-button_stripe-red", confirm: "Are you sure you want to cancel this request?"
+
+
 
 - if @trip.comments.empty?
   h2 No one commented on this trip yet. If you want to discuss trip details in private, create a request to trip owner and negotiate conditions inside the request.
 - else
-  h3 Comments
-  ul
-    = render @trip.comments if @trip.comments
+  h2 Comments
+  = render @trip.comments if @trip.comments
 
 = render "comments/form", owner: "Trip"
