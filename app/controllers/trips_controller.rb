@@ -1,5 +1,3 @@
-require "pry"
-
 class TripsController < InheritedResources::Base
   actions :all, except: [:index, :create]
 
