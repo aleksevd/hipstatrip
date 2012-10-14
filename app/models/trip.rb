@@ -54,4 +54,26 @@ class Trip < ActiveRecord::Base
       where(driver_id: nil)
     end
   end
+
+  def start_address=(value)
+    self.origin = geocode(value)
+    super
+  end
+
+  def end_address=(value)
+    self.destination = geocode(value)
+    super
+  end
+
+private
+
+  def geocode(value)
+    return nil unless value.present?
+
+    coords = Geocoder.coordinates(value)
+
+    return nil unless coords.present?
+
+    Point.from_x_y(coords[1], coords[0], 4326)
+  end
 end
