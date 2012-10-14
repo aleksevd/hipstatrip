@@ -6,9 +6,9 @@
       li.text Are you a
       li.button(role="pushable")
         - if @search.driver
-          = f.radio_button :driver, 0, checked: true
+          = f.radio_button :driver, 1, checked: true
         - else
-          = f.radio_button :driver, 0
+          = f.radio_button :driver, 1
         = link_to "#", class: "coolHandLuke_pressed" do
           = image_tag "btn-driver.png"
           |
@@ -17,9 +17,9 @@
       li.text or a
       li.button(role="pushable")
         - if @search.driver
-          = f.radio_button :driver, 1
+          = f.radio_button :driver, 0
         - else
-          = f.radio_button :driver, 1, checked: true
+          = f.radio_button :driver, 0, checked: true
         = link_to "#" do
           = image_tag "btn-passenger.png"
           |
