@@ -2,10 +2,10 @@ class ProposalDecorator < Draper::Base
   decorates :proposal
 
   def description
-    if sender == trip.owner
-      "#{sender} offers to go with you"
+    if trip.driver_id.present?
+      "#{sender} wants to participate in the trip"
     else
-      "#{sender} offers to drive you"
+      "#{sender} offers to be a driver of this trip"
     end
   end
 
