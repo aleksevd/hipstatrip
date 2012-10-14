@@ -4,17 +4,6 @@
       li.text Are you a
       li.button(role="pushable")
         - if (@trip.is_driver.to_s == "true") || (@trip.is_driver.to_s == "1")
-          = f.radio_button :is_driver, 1, checked: true
-        - else
-          = f.radio_button :is_driver, 1
-        = link_to "#", class: "coolHandLuke_pressed" do
-          = image_tag "btn-driver.png"
-          |
-            Driver
-
-      li.text or a
-      li.button(role="pushable")
-        - if (@trip.is_driver.to_s == "true") || (@trip.is_driver.to_s == "1")
           = f.radio_button :is_driver, 0
         - else
           = f.radio_button :is_driver, 0, checked: true
@@ -22,6 +11,16 @@
           = image_tag "btn-passenger.png"
           |
             Passenger
+      li.text or a
+      li.button(role="pushable")
+        - if (@trip.is_driver.to_s == "true") || (@trip.is_driver.to_s == "1")
+          = f.radio_button :is_driver, 1, checked: true
+        - else
+          = f.radio_button :is_driver, 1
+        = link_to "#", class: "coolHandLuke_pressed" do
+          = image_tag "btn-driver.png"
+          |
+            Driver
       li.text ?
     /= f.collection_radio_buttons :is_driver, [[false, 'Passenger'], [true, 'Driver']], :first, :last, checked: false
 
