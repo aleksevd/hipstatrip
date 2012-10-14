@@ -9,8 +9,9 @@ h2
   - if @proposal.state != 2 && @proposal.belongs_to_user?(current_user)
     span= link_to "Cancel this request", [@proposal, :cancel], method: :post, class: "fancy-button fancy-button_stripe fancy-button_stripe-red", confirm: "Are you sure you want to cancel this request?"
 
+br
 
 = render @proposal.comments
 
-h5 Leave a comment
+h2 Leave a comment
 = render "comments/form", owner: "Proposal"

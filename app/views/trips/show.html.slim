@@ -16,7 +16,7 @@ h1
 
 - if @trip.description.present?
   h2 Trip Description
-  textarea.hipster_description= @trip.description
+  textarea.hipster_description(disabled=true)= @trip.description
 
 - if @trip.driver_type?
   h2 #{@trip.driver.try(:name)} is going to be driver for this trip
@@ -34,6 +34,7 @@ h1
     = @trip.owner.name
   h2
     | There is no driver for this trip yet.
+    br
     - unless current_user.try(:id) == @trip.owner.id
       | Want to be a driver? Create a request to trip owner!
 
@@ -41,7 +42,8 @@ h1
 
 - if @proposals.empty?
   h2
-    | No one requested to join this trip yet
+    | No one requested to join this trip yet.
+    br
     - unless current_user.try(:id) == @trip.owner.id
       | Make a request to trip owner if you want to participate
 
