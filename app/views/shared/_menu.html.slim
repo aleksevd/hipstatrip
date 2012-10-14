@@ -4,6 +4,7 @@
       li= link_to "Home", :root
       - if user_signed_in?
         li= link_to "My Trips", :trips
+        li= link_to "Create a new Trip", %w[new trip]
         li= link_to "Logout", %w[destroy user session], method: :delete
       - else
         li= link_to "Login", %w[new user session]

@@ -45,8 +45,16 @@
     margin-top: 60px
     text-align: center
 
-.search-form__origin
+.search-form__origin-container
   +position(98px, 200px)
 
-.search-form__destination
+.search-form__destination-container
   +position(500px, 200px)
+
+.icon-clear
+  +inline-block
+  +position($right: 12px, $top: 15px)
+  background: image-url("x.png")
+  width: 28px
+  height: 28px
+  cursor: pointer
