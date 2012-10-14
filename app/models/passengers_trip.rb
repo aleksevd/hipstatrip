@@ -11,6 +11,6 @@ class PassengersTrip < ActiveRecord::Base
   private
 
   def send_email
-    TripMailer.cancelation(passenger).deliver unless trip.persisted?
+    TripMailer.cancelation(passenger, trip).deliver
   end
 end

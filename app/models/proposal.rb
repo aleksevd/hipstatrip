@@ -21,6 +21,7 @@ class Proposal < ActiveRecord::Base
     if driver?
       trip.update_column :driver_id, sender_id
       trip.proposals.where { id != my { id } }.destroy_all
+      change_receiver_and_sender
     else
       trip.passengers << sender
     end
@@ -33,8 +34,8 @@ class Proposal < ActiveRecord::Base
     update_column :state, 2
 
     unless driver?
-      trip.passengers_trips.where(passenger_id: sender_id).destroy_all
-      trip.passengers_trips.where(passenger_id: receiver_id).destroy_all
+      trip.passengers_trips.where(passenger_id: sender_id).delete_all
+      trip.passengers_trips.where(passenger_id: receiver_id).delete_all
     end
 
     trip.update_attributes(seats_occupied: trip.seats_occupied.to_i - 1)
@@ -66,5 +67,11 @@ private
     if sender_id == receiver_id
       self.errors.add(:same_receiver_and_sender, "Reseiver And Sender can't be same.")
     end
+  end
+
+  def change_receiver_and_sender
+    new_receiver_id = sender_id
+    update_column :sender_id, receiver_id
+    update_column :receiver_id, new_receiver_id
   end
 end
