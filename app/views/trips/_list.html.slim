@@ -11,7 +11,8 @@
         .trip-list__item__photo= gravatar_image_tag(trip.owner)
         .trip-list__item__name.label.label-info= trip.owner.name
         .trip-list__item__route= trip.route
-        .trip-list__item__date.label.label-info= l trip.starts_at, format: :short
+        - if trip.starts_at.present?
+          .trip-list__item__date.label.label-info= l trip.starts_at, format: :short
         .trip-list__item__description
         .trip-list__item__button.fancy-button.fancy-button_stripe.fancy-button_stripe-green View
 

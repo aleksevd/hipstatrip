@@ -1,1 +1,25 @@
 @import trips/list
+
+.trip-form-container
+  border: 1px solid #eee
+  background: image_url("trip-form-bg.gif")
+  padding-top: 40px
+  height: 300px
+
+  h2
+    color: #000
+    padding: 10px
+    text-align: center
+
+  li.text
+    +box-shadow(none)
+    font-size: 24px
+    color: #000
+    height: 110px
+    padding-top: 50px
+
+.trip-form__origin-container
+  +position(98px, 200px)
+
+.trip-form__destination-container
+  +position(500px, 200px)

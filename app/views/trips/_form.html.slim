@@ -1,8 +1,42 @@
-= simple_form_for @trip do |f|
-  = f.collection_radio_buttons :is_driver, [[false, 'Passenger'], [true, 'Driver']], :first, :last, checked: false
-  = f.input :start_address
-  = f.input :end_address
-  = f.input :starts_at
+.fancy-form-container.trip-form-container
+  = simple_form_for @trip do |f|
+    ul.coolHandLuke.coolHandLukeSimple
+      li.text Are you a
+      li.button(role="pushable")
+        - if (@trip.is_driver.to_s == "true") || (@trip.is_driver.to_s == "1")
+          = f.radio_button :is_driver, 1, checked: true
+        - else
+          = f.radio_button :is_driver, 1
+        = link_to "#", class: "coolHandLuke_pressed" do
+          = image_tag "btn-driver.png"
+          |
+            Driver
 
-  = render "editional_fields", f: f
-  = f.button :submit, class: "btn btn-primary"
+      li.text or a
+      li.button(role="pushable")
+        - if (@trip.is_driver.to_s == "true") || (@trip.is_driver.to_s == "1")
+          = f.radio_button :is_driver, 0
+        - else
+          = f.radio_button :is_driver, 0, checked: true
+        = link_to "#" do
+          = image_tag "btn-passenger.png"
+          |
+            Passenger
+      li.text ?
+    /= f.collection_radio_buttons :is_driver, [[false, 'Passenger'], [true, 'Driver']], :first, :last, checked: false
+
+    .trip-form__origin-container
+      = f.input :start_address, placeholder: "Where do you go from?", input_html: { role: "geocompletion clearable" }
+      .icon-clear
+
+    .trip-form__destination-container
+      = f.input :end_address, placeholder: "Where are you going to?", input_html: { role: "geocompletion clearable" }
+      .icon-clear
+
+    /= f.input :starts_at
+
+    /= render "editional_fields", f: f
+    /= f.button :submit, class: "btn btn-primary"
+
+    .submit-container
+      = f.submit "Let's roll!", class: "btn btn-primary btn-large"
