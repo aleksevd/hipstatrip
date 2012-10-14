@@ -69,10 +69,7 @@ class Trip < ActiveRecord::Base
 private
 
   def geocode(value)
-<<<<<<< HEAD
-=======
     #return nil
->>>>>>> bugs fixed
     return nil unless value.present?
 
     coords = Geocoder.coordinates(value)
