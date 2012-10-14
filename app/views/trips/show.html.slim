@@ -8,20 +8,10 @@ h1
 .trip-map= @trip.route_map
 
 - if @trip.driver_type?
-  p
-    = "Driver: "
-    = @trip.driver.try(:name)
-    = gravatar_image_tag(@trip.driver)
-  p
-    = "Seats occupied: "
-    = @trip.seats_occupied
-  - if @trip.seats_occupied
-    p
-      = "Seats available: "
-      = @trip.seats
+  h2 #{@trip.driver.try(:name)} is going to be driver for this trip
+
   - if current_user
-    p
-      = "Passengers"
+    h2 Passengers
     ul
       - @trip.passengers.each do |passenger|
        ul
