@@ -20,6 +20,9 @@
   &:nth-child(odd)
     float: left
 
+.trip-list__item__name
+  +position(-1px, -1px)
+
 .trip-list__item__photo
   width: 90px
   height: 90px
@@ -31,9 +34,7 @@
   font-weight: bold
 
 .trip-list__item__date
-  position: absolute
-  right: -1px
-  top: -1px
+  +position($right: -1px, $top: -1px)
 
 .trip-list__item__button
   +position($right: 5px, $bottom: 10px)

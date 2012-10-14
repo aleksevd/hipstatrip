@@ -1,0 +1,93 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://dev.virtualearth.net/REST/v1/Locations?key=AmlpE_LFoSU7rG43A91OY7HWcHhCeK5n65n6HWQalQ6w2NbKy0PjGNEA-ZtxQqKl&query=Moscow
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "Y2FjaGUtY29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "dHJhbnNmZXItZW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+      !binary "Y29udGVudC10eXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbg==
+      !binary "Y29udGVudC1lbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "dmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "c2VydmVy":
+      - !binary |-
+        TWljcm9zb2Z0LUlJUy83LjU=
+      !binary "eC1ibS10cmFjZWlk":
+      - !binary |-
+        YTk4MjBjNTE2ZDRhNGZkOTkyYmIwOGExYjg1YTE1ZjM=
+      !binary "eC1ibS1zcnY=":
+      - !binary |-
+        QU1TTTAwMTEwMSwgQU1TTVNOVk0wMDI0MDIsIEFNU01TTlZNMDAyNDYzLCBB
+        TVNNU05WTTAwMjQyMCwgQU1TTVNOVk0wMDI0MTQsIDAuNzYsIEFNU01TTlZN
+        MDAxMzIyLCBBTVNNU05WTTAwMTMxNA==
+      !binary "eC1tcy1ibS13cy1pbmZv":
+      - !binary |-
+        MA==
+      !binary "eC1hc3BuZXQtdmVyc2lvbg==":
+      - !binary |-
+        NC4wLjMwMzE5
+      !binary "eC1wb3dlcmVkLWJ5":
+      - !binary |-
+        QVNQLk5FVA==
+      !binary "ZGF0ZQ==":
+      - !binary |-
+        U3VuLCAxNCBPY3QgMjAxMiAxNTo0MTo1NiBHTVQ=
+      !binary "Y29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAEANRW727bNhB/FUKfVZn/ReZblgBb0HoL4rZf5iKgJdomIIsC
+        SSU10jzQXmNPtqMcdw1arAbaoSgCBCJ597u73/2O9ENhxrS1fXKNSc73NzaO
+        XbrwrS3Oiremc+1FsG0+N10symIVTN++8hv/Jjiw2KY0nC1ny1lr76o7F9Jo
+        OmtC2la9TcvZL9na9ZvlrAOX28HfW0C7Xe2rod8AWuOHfXCbbQKoi+M3+vsv
+        RDGhaO6a4KNfJwQoyKWI4jgMnbMhVui869BkHlGw0YY721bo9dZFdH59hRrT
+        9z6hlUWmaWyMtp0woFLU+D5BPdPa9PvsDRVHtDN79OQzgn0JB0Pw7diArw8o
+        QSlx51KCpesnzx0EsQHdu7T1Y0L2/QBYEd2HbNWjwYadixFIRevgd5+Uc+HD
+        4MPEdwUsgJcfQ2MXNsXi7M+HwsbkdgYivfbJdMUZ/9fmYHB7m/ZD7tArf2jb
+        2cdGxGZrdyZWu2O0qvE72IauNNvch8Z0y9l9XM4AElp0R3JXV/49AAtRcSwY
+        lYrDP1ITXTJZSUpJXRPKMWWcqVLICmuFNSFUcKWoIiVTlSRMSVUTxmqlsXxX
+        Fr3Z5RTnPjb+vkQ3I3BhINjgXQ8Nfyiearie1lkMPoBYoO54yKUWpMZKQzK1
+        KFkNIRSmVBNVY0Jq+u6xLEzbZs4zmml3rr90MQXXpI9x0YVL+wl87FPY39gN
+        sAWnH7NZ+wBUA9fnR6jPM55IyzjHs+IxI/ZrB5PR5Bp+AyWCYZ6TtH99rGsY
+        u9zF686AUVlsrG9gsKZ6D338VgbAxXRNjgJVzS3osM21eWi7HwBwjGZjczoZ
+        rwByhs7si3eP4AhFN9s859PRrx48gdD/U1qCa8KxZpjUos6iqSv45FQzAWVJ
+        yUkJVlryWsMfkwyURbO0KKESKxDWpED+faQltdRcEI05OzArMMXAtxYMdH2S
+        tn5iWX2l+p9HV1xWNVEKLiOYEZ1vo/IFjAYoSwvQDAwMycLKZlwSirmgSmEl
+        dDaTla5rDFIDMhgT+nNlXV2erKocgoE+NdPiwORTJhgLTuRpl9YU79kmzZSZ
+        ZLbwalRfUNyb3uUnaZGmNP5TeBP4jxHdieT8PLqDoWEUpkYKjCnnBDT2gmAC
+        dxWmIDzBuab5+cxmNVxxULfWEmv+ZIYZkYxwqWsqv/BYvlycrLspBFCqCYUH
+        O8MdQygOaw1PNYT5iu6meJ/pbpHsne3jtytvgv8xyjuRnu+tvOkkAjVjPPyY
+        phgfNy5tbIIb0oHGP14CPPy6bOxVDmm0orgRRLbc8HWrNV2tsDJkpYQhYs0+
+        nM8XcwzjgskHTGGAKkUrhvG0v/j97TzrEdMSfbqW7Pma4udrwkuEq1p+uksY
+        pc/XhBeP/wwAl7MYPjAMAAA=
+    http_version: !binary |-
+      MS4x
+  recorded_at: Sun, 14 Oct 2012 15:41:56 GMT
+recorded_with: VCR 2.2.5

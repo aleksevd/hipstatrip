@@ -8,3 +8,5 @@ $ ->
     c = "0" + c while (c.length < 6)
 
     $(e).css("color", "#" + c)
+
+  $("@geocompletion").each (i, e) -> $(e).geocomplete()

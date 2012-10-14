@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!
+
   def create
     @owner_class = params[:owner].constantize
 

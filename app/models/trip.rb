@@ -24,8 +24,15 @@ class Trip < ActiveRecord::Base
     driver_id.present?
   end
 
+  def self.matching_route(origin, destination)
+    scope = scoped
+    scope = scope.where("ST_DWithin(origin, ?, ?)", origin, search_range) if origin.present?
+    scope = scope.where("ST_DWithin(destination, ?, ?)", destination, search_range) if destination.present?
+    scope
+  end
+
   def self.close_to(trip)
-    scope = where("ST_DWithin(origin, :origin, :range) AND ST_DWithin(destination, :destination, :range)", origin: trip.origin, destination: trip.destination, range: search_range)
+    scope = matching_route(trip.origin, trip.destination)
 
     if trip.new_record?
       scope

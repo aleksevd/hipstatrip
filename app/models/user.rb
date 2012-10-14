@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
   def all_trips
     driver_trips + trips
   end
+
+  def name
+    email.split("@").first rescue ""
+  end
 end

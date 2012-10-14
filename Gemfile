@@ -53,6 +53,8 @@ gem "draper"
 group :test do
   gem "shoulda-matchers"
   gem "database_cleaner"
+  gem "vcr"
+  gem "fakeweb"
 end
 
 group :development do

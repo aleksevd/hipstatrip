@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://dev.virtualearth.net/REST/v1/Locations?key=AmlpE_LFoSU7rG43A91OY7HWcHhCeK5n65n6HWQalQ6w2NbKy0PjGNEA-ZtxQqKl&query=qerwdsfa
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "Y2FjaGUtY29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "dHJhbnNmZXItZW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+      !binary "Y29udGVudC10eXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbg==
+      !binary "Y29udGVudC1lbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "dmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "c2VydmVy":
+      - !binary |-
+        TWljcm9zb2Z0LUlJUy83LjU=
+      !binary "eC1ibS10cmFjZWlk":
+      - !binary |-
+        YjA3NjdlZWMwOTdiNDQyNWFmNTNkNWQxMzUzNWMwMTg=
+      !binary "eC1ibS1zcnY=":
+      - !binary |-
+        QU1TTTAwMTQwMSwgQU1TTVNOVk0wMDI0MDUsIEFNU01TTlZNMDAxMzIxLCBB
+        TVNNU05WTTAwMTg1NywgQU1TTVNOVk0wMDI0NjQsIEFNU01TTlZNMDAxOTYw
+        LCBBTVNNU05WTTAwMTMyMA==
+      !binary "eC1tcy1ibS13cy1pbmZv":
+      - !binary |-
+        MA==
+      !binary "eC1hc3BuZXQtdmVyc2lvbg==":
+      - !binary |-
+        NC4wLjMwMzE5
+      !binary "eC1wb3dlcmVkLWJ5":
+      - !binary |-
+        QVNQLk5FVA==
+      !binary "ZGF0ZQ==":
+      - !binary |-
+        U3VuLCAxNCBPY3QgMjAxMiAxNTo0MTo1NSBHTVQ=
+      !binary "Y29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAEAFyRwW7bMBBEf2XBsyFTsmQ7vrnuJWjdFnWaSx0EFLm2CEgk
+        Qa7sGkk+qL+RL+tKbZCkNw135lGzfBCqpwYdWa3IevcdU9/SxhsUK3GrWms2
+        Ec0wV20SE1FH5cxnf/Q/omVHQxRW++l+avCUnWykXrWoIjWZQ9pPPwxu6477
+        acuR++DPyLT7+pIFd2Sa9uES7bEhRm1evuH5NxQyL2BrdfTJHwiYApYSpD6E
+        1mJMGazbFkZ7gogJ4wlNBjeNTbD+dg1aOecJagSlNaaEZmRwU9DeEfcZtXKX
+        Ic2NE3TqAv8yPfsnPAjRm15z1kcgrpI6S8TSujHZ8SUY4Wyp8T0B/grMSnCO
+        g8tBwNjZlHipcIi+e1Nn42Pwcdx3xlvglO+jxh1SEqufDwIT2U7xTTeeVCtW
+        8tUzGO6e7iYikaI+/X2oQsqXg4+YdLRhQPNOv35iPP+5xmvDspaL+QJRy6tF
+        XZZFpQ7VzFQmn1WzSst8+bje7rZS5qXMH2WRSZkti2wm5Xi++3LLs6KU1QRe
+        dT4r8nd6WS3e6qKcl+/mV3P5X16Kpz8DALPLbeqGAgAA
+    http_version: !binary |-
+      MS4x
+  recorded_at: Sun, 14 Oct 2012 15:41:56 GMT
+recorded_with: VCR 2.2.5
