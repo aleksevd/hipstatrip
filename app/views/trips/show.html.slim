@@ -1,9 +1,16 @@
 h1
   = @trip.route
-  
+
+h1
+  - unless (@trip.owner == current_user) || (current_user && current_user.opened_proposals_on_trip?(@trip))
+    span= link_to "Make a request to join this trip", new_trip_proposal_path(@trip), class: "fancy-button fancy-button_stripe fancy-button_stripe-green"
+
   - if current_user
+    - if can? :update, @trip
+      span= link_to "Mark trip as Completed", trip_path(@trip, trip: { complete: true }), method: :put, class: "fancy-button fancy-button_stripe fancy-button_stripe-green"
+
     - if can? :destroy, @trip
-      span= link_to "Destroy trip", @trip, method: :delete, class: "fancy-button fancy-button_stripe fancy-button_stripe-red"
+      span= link_to "Destroy trip", @trip, method: :delete, class: "fancy-button fancy-button_stripe fancy-button_stripe-red", confirm: "Are you sure you want to destroy this trip?"
 
 .trip-map= @trip.route_map
 
@@ -26,15 +33,7 @@ h1
     - unless current_user.try(:id) == @trip.owner.id
       | Want to be a driver? Create a request to trip owner!
 
-- unless (@trip.owner == current_user) || (current_user && current_user.opened_proposals_on_trip?(@trip))
-  span= link_to "Make a request to join this trip", new_trip_proposal_path(@trip), class: "btn btn-success"
 
-- if current_user
-  - if can? :update, @trip
-    span= link_to "Commplete trip", trip_path(@trip, trip: { complete: true }), method: :put, class: "btn btn-success"
-
-  - if can? :destroy, @trip
-    span= link_to "Destroy trip", @trip, method: :delete, class: "btn btn-danger"
 
 - if @proposals.empty?
   h2
@@ -62,7 +61,7 @@ h1
             span= link_to "Cancel", [proposal, :cancel], method: :post, class: "btn btn-danger"
 
 - if @trip.comments.empty?
-  | No one commented on this trip yet. If you want to discuss trip details in private, create a request to trip owner and negotiate conditions inside the request.
+  h2 No one commented on this trip yet. If you want to discuss trip details in private, create a request to trip owner and negotiate conditions inside the request.
 - else
   h3 Comments
   ul
