@@ -16,13 +16,14 @@ p
     p
       = "Seats available: "
       = @trip.seats
-  p
-    = "Passengers"
-  ul
-    - @trip.passengers.each do |passenger|
-     ul
-       li
-         = passenger.email
+  - if current_user
+    p
+      = "Passengers"
+    ul
+      - @trip.passengers.each do |passenger|
+       ul
+         li
+           = passenger.email
 - else
   p
     = "Passenger "
@@ -31,25 +32,26 @@ p
 - unless (@trip.owner == current_user) || (current_user && current_user.requested_trip?(@trip))
   span= link_to "Make proposal", new_trip_proposal_path(@trip), class: "btn btn-success"
 
-- if can? :destroy, @trip
-  span= link_to "Destroy trip", @trip, method: :delete, class: "btn btn-danger"
+- if current_user
+  - if can? :destroy, @trip
+    span= link_to "Destroy trip", @trip, method: :delete, class: "btn btn-danger"
 
-h2 Proposals
+  h2 Proposals
 
-ul.proposals
-  - @proposals.each do |proposal|
-    - if true
-      li
-        span.label.label-info= proposal.state_name
-        span= proposal.description
+  ul.proposals
+    - @proposals.each do |proposal|
+      - if true
+        li
+          span.label.label-info= proposal.state_name
+          span= proposal.description
 
-        span= link_to "View", [@trip, proposal], class: "btn btn-primary"
+          span= link_to "View", [@trip, proposal], class: "btn btn-primary"
 
-        - if proposal.state.nil? && @trip.owner == current_user
-          span= link_to "Accept", [proposal, :accept], method: :post, class: "btn btn-success"
+          - if proposal.state.nil? && @trip.owner == current_user
+            span= link_to "Accept", [proposal, :accept], method: :post, class: "btn btn-success"
 
-        - if proposal.state != 2
-          span= link_to "Cancel", [proposal, :cancel], method: :post, class: "btn btn-danger"
+          - if proposal.state != 2 && proposal.belongs_to_user?(current_user)
+            span= link_to "Cancel", [proposal, :cancel], method: :post, class: "btn btn-danger"
 
 h3 Comments
 ul

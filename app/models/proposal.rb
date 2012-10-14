@@ -47,6 +47,10 @@ class Proposal < ActiveRecord::Base
       where { (sender_id == my { user.id }) | (trip.driver_id == my { user.id }) | ((trip.driver_id == nil) & (passengers_trips.passenger_id == my { user.id })) }
   end
 
+  def belongs_to_user?(user)
+    [receiver_id, sender_id].include?(user.id)
+  end
+
 private
 
   def driver?
