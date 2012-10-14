@@ -14,12 +14,13 @@ html
     link href='http://fonts.googleapis.com/css?family=Rye' rel='stylesheet' type='text/css'
     = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
 
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+
+
   body
     .container
-      .header[role="las-vegas"]
-        - 3.times do
-          p
-          - 6.times do
-            span HIPSTATRIP
+      = render "shared/header"
 
       == yield
+
+      = render "shared/footer"

@@ -1,0 +1,38 @@
+.fancy-button
+  +border-radius(4px)
+  +text-shadow(0 1px 0 #FFF)
+  +box-shadow(0 -1px 0 0 rgba(255,255,255,0.5) inset, 0 5px 0 0 #c4c5d5, 0 1px 0 0 #FFF inset)
+  +transition(all 0.1s linear)
+  +background-image(linear-gradient(top, #f7f7f7 0%, #e7e7f9 100%))
+  border-left-width: 0
+  border-bottom-width: 0
+  color: #333333
+  padding: 5px 15px
+  background: #e7e7f9
+  +inline-block
+  position: relative
+
+  &.fancy-button_stripe:before
+    +border-radius(4px 0 0 4px)
+    +box-shadow(0 -1px 0 0 rgba(255,255,255,0.2) inset, 0 5px 0 0 #447700)
+    content: ""
+    position: absolute
+    left: -2px
+    top: 0
+    bottom: 0
+    width: 10px
+
+  &.fancy-button_stripe-green:before
+    background: #f7f7f7
+    content: ""
+    +background-image(linear-gradient(top, #98c100 0%, #659506 100%))
+    +transition(all 0.1s linear)
+
+  &.fancy-button_stripe-green:hover:before
+    +background-image(linear-gradient(top, #abcc00 0%, #659506 100%))
+
+  &:hover
+    +background-image(linear-gradient(top, #FFFFFF 0%, #e7e7f9 100%))
+
+  &:active
+    +transform(translateY(3px))
