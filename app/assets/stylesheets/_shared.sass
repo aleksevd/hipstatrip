@@ -11,3 +11,12 @@
     font-size: 22px
     font-family: "Rye", cursive
     letter-spacing: 1px
+
+.flash
+  @extend .alert
+
+  &.flash_notice
+    @extend .alert-success
+
+  &.flash_alert
+    @extend .alert-error
