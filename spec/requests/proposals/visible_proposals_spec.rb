@@ -1,6 +1,7 @@
 require "spec_helper"
 
-pending "Visible Proposals" do
+=begin
+describe "Visible Proposals" do
   let!(:owner) { create(:user) }
   let!(:user1) { create(:user) }
   let!(:user2) { create(:user) }
@@ -60,3 +61,4 @@ pending "Visible Proposals" do
     it_behaves_like "Proposal visibility"
   end
 end
+=end

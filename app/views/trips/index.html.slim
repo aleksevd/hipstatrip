@@ -1,3 +1,6 @@
 h1 My Trips
 
-= render "trips/list", trips: @trips
+- if @trips.empty?
+  h2 It seems that you didn't create any trips yet. Probably a good time to #{ link_to "create one", %w[new trip], class: "fancy-button fancy-button_stripe fancy-button_stripe-green"}
+- else
+  = render "trips/list", trips: @trips
