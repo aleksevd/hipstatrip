@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014060541) do
+ActiveRecord::Schema.define(:version => 20121014195408) do
 
   create_table "comments", :force => true do |t|
     t.string   "text"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20121014060541) do
     t.point    "destination",    :limit => 0,                 :srid => 4326, :geographic => true
     t.integer  "seats_occupied"
     t.integer  "seats"
+    t.boolean  "complete",                    :default => false, :null => false
   end
 
   create_table "users", :force => true do |t|
