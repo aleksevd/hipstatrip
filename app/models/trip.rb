@@ -46,8 +46,4 @@ class Trip < ActiveRecord::Base
   def self.search_range
     20_000
   end
-
-  def has_passenger?(passenger)
-    passengers_trips.find_by_passenger_id(passenger.id).present?
-  end
 end

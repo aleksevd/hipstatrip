@@ -33,6 +33,7 @@ class Proposal < ActiveRecord::Base
 
     unless driver?
       trip.passengers_trips.where(passenger_id: sender_id).destroy_all
+      trip.passengers_trips.where(passenger_id: receiver_id).destroy_all
     end
 
     trip.update_attributes(seats_occupied: trip.seats_occupied.to_i - 1)

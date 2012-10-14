@@ -28,7 +28,7 @@ p
     = "Passenger "
     =@trip.owner.email
 
-- unless (@trip.owner == current_user) || (@trip.has_passenger?(current_user))
+- unless (@trip.owner == current_user) || current_user.requested_trip?(@trip)
   span= link_to "Make proposal", new_trip_proposal_path(@trip), class: "btn btn-success"
 
 - if can? :destroy, @trip
@@ -45,7 +45,7 @@ ul.proposals
 
         span= link_to "View", [@trip, proposal], class: "btn btn-primary"
 
-        - if proposal.state.nil?
+        - if proposal.state.nil? && @trip.owner == current_user
           span= link_to "Accept", [proposal, :accept], method: :post, class: "btn btn-success"
 
         - if proposal.state != 2

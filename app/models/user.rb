@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
   def name
     email.split("@").first rescue ""
   end
+
+  def requested_trip?(trip)
+    (trip.proposals.map(&:sender_id) + trip.proposals.map(&:receiver_id)).include?(id)
+  end
 end
