@@ -1,5 +1,4 @@
 class Trip < ActiveRecord::Base
-
   attr_accessible :driver_id, :starts_at, :is_driver, :comments_attributes,
                   :start_address, :end_address, :seats, :seats_occupied
   attr_accessor :is_driver
@@ -23,5 +22,19 @@ class Trip < ActiveRecord::Base
 
   def driver_type?
     driver_id.present?
+  end
+
+  def self.close_to(trip)
+    scope = where("ST_DWithin(origin, :origin, :range) AND ST_DWithin(destination, :destination, :range)", origin: trip.origin, destination: trip.destination, range: search_range)
+
+    if trip.new_record?
+      scope
+    else
+      scope.where { id != my { trip.id } }
+    end
+  end
+
+  def self.search_range
+    20_000
   end
 end
