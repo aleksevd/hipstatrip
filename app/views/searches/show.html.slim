@@ -37,11 +37,12 @@
     .submit-container
       = f.submit "Find who else is going there!", class: "btn btn-primary btn-large"
 
-- if @search.trips.empty?
+- if @trips.empty?
   h2 Ohh nooooes! It seems that we don't have any trips that match your route!
   - if user_signed_in?
     h3 Please #{ link_to "Create a new Trip", %w[new trip], class: "fancy-button fancy-button_stripe fancy-button_stripe-green" } so that when someone will match your route, we'll notify you!
   - else
     h3 Please #{ link_to "Register", %w[new user registration], class: "fancy-button fancy-button_stripe fancy-button_stripe-green" } and then #{ link_to "Create a new Trip", %w[new trip], class: "fancy-button fancy-button_stripe fancy-button_stripe-green" } so that when someone will match your route, we'll notify you!
 - else
-  = render "trips/list", trips: @search.trips
+  = render "trips/list", trips: @trips
+  = paginate @trips

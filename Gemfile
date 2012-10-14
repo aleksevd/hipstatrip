@@ -66,3 +66,4 @@ gem 'inherited_resources'
 gem "geocoder"
 gem "squeel"
 gem "spatial_adapter", git: "https://github.com/Empact/spatial_adapter.git"
+gem "kaminari"
