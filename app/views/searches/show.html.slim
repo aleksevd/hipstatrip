@@ -1,22 +1,31 @@
 .search-form-container
   h2 Hi! Going somewhere?
-  ul.coolHandLuke.coolHandLukeSimple
-    li.text Are you a
-    li.button
-      = link_to "#" do
-        = image_tag "btn-driver.png"
-        |
-          Driver
-
-    li.text or a
-    li.button
-      = link_to "#" do
-        = image_tag "btn-passenger.png"
-        |
-          Passenger
-    li.text ?
-
   = simple_form_for @search, url: "/", method: "get" do |f|
+
+    ul.coolHandLuke.coolHandLukeSimple
+      li.text Are you a
+      li.button(role="pushable")
+        - if @search.driver
+          = f.radio_button :driver, 0, checked: true
+        - else
+          = f.radio_button :driver, 0
+        = link_to "#", class: "coolHandLuke_pressed" do
+          = image_tag "btn-driver.png"
+          |
+            Driver
+
+      li.text or a
+      li.button(role="pushable")
+        - if @search.driver
+          = f.radio_button :driver, 1
+        - else
+          = f.radio_button :driver, 1, checked: true
+        = link_to "#" do
+          = image_tag "btn-passenger.png"
+          |
+            Passenger
+      li.text ?
+
     .search-form__origin-container
       = f.input :origin_address, placeholder: "Where do you go from?", input_html: { class: "search-form__origin", role: "geocompletion clearable" }
       .icon-clear
@@ -24,6 +33,7 @@
     .search-form__destination-container
       = f.input :destination_address, placeholder: "Where are you going to?", input_html: { class: "search-form__destination", role: "geocompletion clearable" }
       .icon-clear
+
 
     .submit-container
       = f.submit "Find who else is going there!", class: "btn btn-primary btn-large"

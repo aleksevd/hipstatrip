@@ -26,3 +26,16 @@ $ ->
     $x.click ->
       $e.val("")
       $e.keyup()
+
+  $("@pushable").each (i, e) ->
+    $e = $(e)
+    $radio = $(e).find("input")
+    $e.addClass("coolHandLuke_pressed") if $radio.attr("checked") 
+
+    $e.click ->
+      unless $e.hasClass("coolHandLuke_pressed")
+        $("@pushable").not($e).removeClass("coolHandLuke_pressed")
+        $e.addClass("coolHandLuke_pressed")
+        $("@pushable input").not($radio).attr("checked", false)
+        $radio.attr("checked", "checked")
+      false

@@ -46,4 +46,12 @@ class Trip < ActiveRecord::Base
   def self.search_range
     20_000
   end
+
+  def self.of_type(driver)
+    if (driver.to_s == "1") || (driver.to_s == "true")
+      where { driver_id != nil }
+    else
+      where(driver_id: nil)
+    end
+  end
 end

@@ -1,12 +1,11 @@
 class Search
-  include ActiveAttr::BasicModel
-  include ActiveAttr::Attributes
-  include ActiveAttr::MassAssignment
+  include ActiveAttr::Model
 
   attribute :origin_address
   attribute :destination_address
   attribute :origin
   attribute :destination
+  attribute :driver, default: false
 
   def origin_address=(value)
     self.origin = geocode(value)
@@ -19,7 +18,7 @@ class Search
   end
 
   def trips
-    Trip.matching_route(origin, destination)
+    Trip.matching_route(origin, destination).of_type(driver)
   end
 
 private
